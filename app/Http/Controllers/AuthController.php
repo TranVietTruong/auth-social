@@ -25,9 +25,9 @@ class AuthController extends Controller
         }
 
         $url = Socialite::driver($request['driver'])->with([
-                   'GOOGLE_CLIENT_ID' => $request['google_client_id'],
-                   'GOOGLE_CLIENT_SECRET' => $request['google_client_secret'],
-                   'GOOGLE_REDIRECT_URL' => $request['google_redirect_url']
+                   ['client_id' => $request['google_client_id']],
+                   ['client_secret' => $request['google_client_secret']],
+                   ['redirect' => $request['google_redirect_url']]
                ])->stateless()->redirect()->getTargetUrl();
 
         return Response::data($url,1);
@@ -115,7 +115,7 @@ class AuthController extends Controller
     public function checkToken($request)
     {
         $validation = Validator::make($request, [
-            'token'    => 'bail|required',
+            'token'    => 'required',
         ]);
 
         if ($validation->fails())

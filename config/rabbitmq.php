@@ -20,7 +20,7 @@ return [
                 'auth' => false
             ],
 			'/v1.0/auth/user' => [
-				'method' => 'get',
+				'method' => 'post',
 				'action' => 'AuthController@user',
 				'auth' => false
 			],
