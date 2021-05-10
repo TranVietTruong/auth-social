@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/url', [\App\Http\Controllers\AuthController::class,'url']);
+Route::get('/auth', [\App\Http\Controllers\AuthController::class,'login']);
